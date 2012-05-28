@@ -6,7 +6,8 @@
 
 QT       += core gui opengl
 
-LIBS += -lGL -lGLU -lglut -lfreetype -lftgl
+#LIBS += -lGL -lGLU -lglut -lfreetype -lftgl
+LIBS += -lGL -lGLU -lglut
 
 TARGET = QtBSTOpenGL
 TEMPLATE = app

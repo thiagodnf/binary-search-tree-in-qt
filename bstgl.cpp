@@ -3,9 +3,6 @@
 #include <GL/gl.h>
 #include <GL/glu.h>
 #include <GL/glut.h>
-#include <FTGL/ftgl.h>
-#include <freetype2/freetype/config/ftheader.h>
-#include <freetype2/freetype/freetype.h>
 
 #include <iostream>
 #include <stack>
