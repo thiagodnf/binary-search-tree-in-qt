@@ -7,3 +7,8 @@ Authors:
 - Débora Martins
 - Marcos Brizendo
 - Thiago Nascimento
+
+Dependencies:
+-----------
+`sudo apt-get install qtcreator g++`
+
