@@ -61,8 +61,8 @@ bool Node::moveXYUntilRight(int valueX,int valueY,int speed){
     if(posX >= valueX && posY <= valueY)
         return true;
     else{
-        float deltaY = abs(posY - valueY);
-        float deltaX = abs(valueX - posX);
+        float deltaY = std::abs(posY - valueY);
+        float deltaX = std::abs(valueX - posX);
 
         if(posX < valueX)
             posX += speed*deltaX/deltaY;

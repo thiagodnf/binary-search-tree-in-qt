@@ -2,6 +2,7 @@
 #define NODE_H
 
 #include <QColor>
+#include <cmath>
 
 class Node
 {
