@@ -26,6 +26,7 @@ protected slots:
     void setRotationX(int value);
     void setRotationY(int value);
     void setRotationZ(int value);
+    void resetRotation();
     void animate(void);
     void zoomIn();
     void zoomOut(void);

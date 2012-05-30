@@ -17,7 +17,8 @@ MainWindow::MainWindow(QWidget *parent) :
     isRandom = false;
 
     ui->centralWidget->layout()->addWidget(bstGL);
-    this->setFocus();
+
+    setFocus();
 }
 
 MainWindow::~MainWindow()
@@ -33,14 +34,12 @@ void MainWindow::keyPressEvent(QKeyEvent *e)
         bstGL->oZ++;
     if(e->key() == Qt::Key_Down)
         bstGL->oZ--;
-    if(e->key() == Qt::Key_Left)
-        bstGL->oX++;
-    if(e->key() == Qt::Key_Right)
-        bstGL->oX--;
+    if(e->key() == Qt::Key_Left){
+        bstGL->moveX(2);
+    }if(e->key() == Qt::Key_Right)
+        bstGL->moveX(1);
     else
         QWidget::keyPressEvent(e);
-
-    bstGL->camera();
 }
 
 void MainWindow::addValue(){
@@ -72,8 +71,7 @@ int MainWindow::getInputValue(){
 
     if(ok)
         return value;
-    else
-        return -1;
+    return -1;
 }
 
 void MainWindow::animate(){
@@ -100,6 +98,13 @@ void MainWindow::setRotationZ(int angle){
     bstGL->setRotateZ(angle);
 }
 
+void MainWindow::resetRotation(){
+    bstGL->resetRotation();
+    ui->spinBoxAxisX->setValue(0);
+    ui->spinBoxAxisY->setValue(0);
+    ui->spinBoxAxisZ->setValue(0);
+}
+
 void MainWindow::zoomIn()
 {
     bstGL->zoomIn();
@@ -114,6 +119,8 @@ void MainWindow::random(bool status)
 {
     isRandom = status;
     ui->actionAddValue->setEnabled(!status);
+    ui->actionSearchValue->setEnabled(!status);
+    ui->actionRemoveValue->setEnabled(!status);
 
     if(status){
         addValue();

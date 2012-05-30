@@ -20,6 +20,7 @@ BSTGL::BSTGL(QWidget *parent)
     xRot = 0;
     yRot = 0;
     zRot = 0;
+    xTrans = 0;
     showAxisXYZ = true;    
     angle = 45;
     currentNode = 0;
@@ -98,12 +99,6 @@ void BSTGL::animate()
     }
 }
 
-void BSTGL::camera()
-{
-    calculate();
-    updateGL();
-}
-
 void BSTGL::calculate()
 {
     glMatrixMode(GL_PROJECTION);
@@ -136,6 +131,13 @@ void BSTGL::paintGL()
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+    calculate();
+    glRotatef(xRot, 1.0, 0.0, 0.0);
+    glRotatef(yRot, 0.0, 1.0, 0.0);
+    glRotatef(zRot, 0.0, 0.0, 1.0);
+
+    glTranslatef(xTrans,0,0);
+
     if(showAxisXYZ)
         drawAxis3D();
 
@@ -163,7 +165,9 @@ void BSTGL::resizeGL(int width, int height)
 void BSTGL::wheelEvent(QWheelEvent *event)
 {
     if (event->delta() == -120) {
+
     }else {
+
     }
     event->accept();
 }
@@ -186,35 +190,35 @@ void BSTGL::zoomOut()
 
 void BSTGL::setRotateX(int angle)
 {
-    if(angle < xRot){
-        glRotatef(-10, 1.0, 0.0, 0.0);
-    }else{
-        glRotatef(10, 1.0, 0.0, 0.0);
-    }
     xRot = angle;
-
     updateGL();
 }
 
-void BSTGL::setRotateY(int angle){
-    if(angle < yRot){
-        glRotatef(-10, 0.0, 1.0, 0.0);
-    }else{
-        glRotatef(10, 0.0, 1.0, 0.0);
-    }
+void BSTGL::setRotateY(int angle)
+{
     yRot = angle;
-
     updateGL();
 }
 
-void BSTGL::setRotateZ(int angle){
-    if(angle < zRot){
-        glRotatef(-10, 0.0, 0.0, 1.0);
-    }else{
-        glRotatef(10, 0.0, 0.0, 1.0);
-    }
+void BSTGL::setRotateZ(int angle)
+{
     zRot = angle;
+    updateGL();
+}
 
+void BSTGL::resetRotation(){
+    xRot = 0;
+    yRot = 0;
+    zRot = 0;
+    updateGL();
+}
+
+void BSTGL::moveX(int direction)
+{
+    if(direction == 1)
+        xTrans++;
+    else
+        xTrans--;
     updateGL();
 }
 

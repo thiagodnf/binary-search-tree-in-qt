@@ -18,6 +18,8 @@ public:
     void setRotateX(int angle);
     void setRotateY(int angle);
     void setRotateZ(int angle);
+    void resetRotation(void);
+    void moveX(int direction);
 
     void addValue(int value);
     void appendValue(int value);
@@ -30,7 +32,6 @@ public:
     void stopAnimation();
     void zoomIn();
     void zoomOut();
-    void camera();
 protected slots:
     void animate(void);
 
@@ -49,8 +50,7 @@ private:
 
     void calculate();
 
-
-    QTimer *timerAnimation;
+    QTimer* timerAnimation;
     GLfloat fAspect;
 
     Node* currentNode;
@@ -58,6 +58,7 @@ private:
     int xRot;
     int yRot;
     int zRot;
+    int xTrans;
     bool showAxisXYZ;
 
 };

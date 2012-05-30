@@ -32,69 +32,127 @@
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
-     <widget class="QSlider" name="verticalSlider3">
-      <property name="maximum">
-       <number>50</number>
+     <widget class="QToolBox" name="toolBoxPage">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
       </property>
-      <property name="singleStep">
-       <number>1</number>
+      <property name="maximumSize">
+       <size>
+        <width>200</width>
+        <height>16777215</height>
+       </size>
       </property>
-      <property name="pageStep">
-       <number>240</number>
+      <property name="currentIndex">
+       <number>0</number>
       </property>
-      <property name="orientation">
-       <enum>Qt::Vertical</enum>
-      </property>
-      <property name="tickPosition">
-       <enum>QSlider::TicksBelow</enum>
-      </property>
-      <property name="tickInterval">
-       <number>240</number>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QSlider" name="verticalSlider2">
-      <property name="maximum">
-       <number>50</number>
-      </property>
-      <property name="singleStep">
-       <number>1</number>
-      </property>
-      <property name="pageStep">
-       <number>240</number>
-      </property>
-      <property name="orientation">
-       <enum>Qt::Vertical</enum>
-      </property>
-      <property name="tickPosition">
-       <enum>QSlider::TicksBelow</enum>
-      </property>
-      <property name="tickInterval">
-       <number>240</number>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QSlider" name="verticalSlider1">
-      <property name="maximum">
-       <number>50</number>
-      </property>
-      <property name="singleStep">
-       <number>1</number>
-      </property>
-      <property name="pageStep">
-       <number>240</number>
-      </property>
-      <property name="orientation">
-       <enum>Qt::Vertical</enum>
-      </property>
-      <property name="tickPosition">
-       <enum>QSlider::TicksBelow</enum>
-      </property>
-      <property name="tickInterval">
-       <number>240</number>
-      </property>
+      <widget class="QWidget" name="pageRotation">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>200</width>
+         <height>241</height>
+        </rect>
+       </property>
+       <attribute name="label">
+        <string>Rotate</string>
+       </attribute>
+       <widget class="QWidget" name="gridLayoutWidget">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>201</width>
+          <height>128</height>
+         </rect>
+        </property>
+        <layout class="QGridLayout" name="gridLayout">
+         <item row="3" column="0">
+          <widget class="QSpinBox" name="spinBoxAxisZ">
+           <property name="layoutDirection">
+            <enum>Qt::LeftToRight</enum>
+           </property>
+           <property name="minimum">
+            <number>-360</number>
+           </property>
+           <property name="maximum">
+            <number>360</number>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="QLabel" name="labelAxisZ">
+           <property name="text">
+            <string>Axis Z</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QLabel" name="labelAxisX">
+           <property name="text">
+            <string>Axis X</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QSpinBox" name="spinBoxAxisX">
+           <property name="layoutDirection">
+            <enum>Qt::LeftToRight</enum>
+           </property>
+           <property name="minimum">
+            <number>-360</number>
+           </property>
+           <property name="maximum">
+            <number>360</number>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QLabel" name="labelAxisY">
+           <property name="text">
+            <string>Axis Y</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QSpinBox" name="spinBoxAxisY">
+           <property name="layoutDirection">
+            <enum>Qt::LeftToRight</enum>
+           </property>
+           <property name="minimum">
+            <number>-360</number>
+           </property>
+           <property name="maximum">
+            <number>360</number>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="0">
+          <widget class="QPushButton" name="pushButtonReset">
+           <property name="text">
+            <string>Reset</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="pageLight">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>200</width>
+         <height>241</height>
+        </rect>
+       </property>
+       <attribute name="label">
+        <string>Light</string>
+       </attribute>
+      </widget>
      </widget>
     </item>
    </layout>
@@ -328,54 +386,6 @@
    </hints>
   </connection>
   <connection>
-   <sender>verticalSlider1</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>MainWindow</receiver>
-   <slot>setRotationX(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>156</x>
-     <y>342</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>88</x>
-     <y>320</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>verticalSlider2</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>MainWindow</receiver>
-   <slot>setRotationY(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>312</x>
-     <y>194</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>268</x>
-     <y>194</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>verticalSlider3</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>MainWindow</receiver>
-   <slot>setRotationZ(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>478</x>
-     <y>249</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>423</x>
-     <y>254</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>actionViewLight</sender>
    <signal>triggered(bool)</signal>
    <receiver>MainWindow</receiver>
@@ -439,6 +449,70 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>spinBoxAxisX</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>setRotationX(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>383</x>
+     <y>136</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>590</x>
+     <y>140</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>spinBoxAxisY</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>setRotationY(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>356</x>
+     <y>176</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>601</x>
+     <y>176</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>spinBoxAxisZ</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>setRotationZ(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>370</x>
+     <y>208</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>604</x>
+     <y>213</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButtonReset</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>resetRotation()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>400</x>
+     <y>241</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>600</x>
+     <y>250</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>addValue()</slot>
@@ -450,5 +524,6 @@
   <slot>zoomIn()</slot>
   <slot>zoomOut()</slot>
   <slot>random(bool)</slot>
+  <slot>resetRotation()</slot>
  </slots>
 </ui>
