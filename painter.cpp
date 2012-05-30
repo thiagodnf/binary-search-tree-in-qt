@@ -55,13 +55,12 @@ void Painter::drawText(float posX, float posY, float posZ, int value) {
 
 void Painter::drawSphere(GLfloat x, GLfloat y, GLfloat z, GLdouble radio) {
     glPushMatrix();
-        glTranslatef(x, y, z);
-        glColor3f(0.2f, 0.5f, 1.0f);
+        glTranslatef(x, y, z);        
         glutSolidSphere(radio, 20, 20);
     glPopMatrix();
 }
 
-void Painter::drawCone(int x,int y,int z,int radius_top, int radius_bottom, int height,int a,int b,int c) {
+void Painter::drawCone(int x,int y,int z,int radius_top, int radius_bottom, int height) {
     glPushMatrix();
     {
         GLUquadric *cylinder = gluNewQuadric();
@@ -79,11 +78,36 @@ void Painter::drawCone(int x,int y,int z,int radius_top, int radius_bottom, int 
     glPopMatrix();
 }
 
-void Painter::drawCylinder(int x,int y,int z,int radius, int height,int a,int b,int c) {
-    drawCone(x,y,z,radius, radius, height,a,b,c);
+void Painter::drawCylinder(int x,int y,int z,int radius, int height) {
+    drawCone(x,y,z,radius, radius, height);
 }
 
 void Painter::drawEdge(int x1,int y1,int x2,int y2){
+
+    int height = abs(y2-y1);
+    int width = abs(x2-x1);
+    float distance = sqrt(abs(pow(width,2)+pow(height,2)));
+    float tan = float(x2-x1)/(y2-y1);
+    float anguloRad = atan(tan);
+    float anguloGraus = (180/M_PI)*anguloRad;
+
+    glPushMatrix();
+    {
+        GLUquadric *cylinder = gluNewQuadric();
+        gluQuadricDrawStyle(cylinder, GLU_FILL);
+        gluQuadricOrientation(cylinder, GLU_INSIDE);
+
+        glTranslatef(x1,y1,0);
+        glRotatef(90, 1, 0, 0);
+        glRotatef(-anguloGraus, 0, 1, 0);
+
+        gluCylinder(cylinder, 2, 2, distance, 20, 20);
+        gluDeleteQuadric(cylinder);
+    }
+    glPopMatrix();
+}
+
+void Painter::drawEdge(int x1,int y1,int z1,int x2,int y2,int z2){
 
     int height = abs(y2-y1);
     int width = abs(x2-x1);
@@ -106,4 +130,46 @@ void Painter::drawEdge(int x1,int y1,int x2,int y2){
         gluDeleteQuadric(cylinder);
     }
     glPopMatrix();
+}
+
+void Painter::enableLight(bool status=true){
+    if(status){
+        //Light
+        GLfloat luzAmbiente[4]  = {1.0,0.7,0.5,1.0};
+        GLfloat luzDifusa[4]    = {1.0,1.0,1.0,1.0};	// "cor"
+        GLfloat luzEspecular[4] = {1.0, 1.0, 1.0, 1.0};// "brilho"
+        GLfloat posicaoLuz[4]   = {0.0, 10.0, 0.0, 0.0};
+
+        // Capacidade de brilho do material
+        GLfloat especularidade[4] = {0.5,1.0,1.0,1.0};
+        GLint especMaterial       = 10;
+
+        glShadeModel(GL_SMOOTH);
+        // Define a refletância do material
+        glMaterialfv(GL_FRONT,GL_DIFFUSE, especularidade);
+        // Define a concentração do brilho
+        glMateriali(GL_FRONT,GL_SHININESS,especMaterial);
+
+        glLightfv(GL_LIGHT0, GL_POSITION, posicaoLuz);
+        glLightfv(GL_LIGHT0, GL_AMBIENT, luzAmbiente);
+        glLightfv(GL_LIGHT0, GL_DIFFUSE, luzDifusa);
+        glLightfv(GL_LIGHT0, GL_SPECULAR, luzEspecular);
+
+        // Habilita a definição da cor do material a partir da cor corrente
+        glEnable(GL_COLOR_MATERIAL);
+        //Habilita o uso de iluminação
+        glEnable(GL_LIGHTING);
+        // Habilita a luz de número 0
+        glEnable(GL_LIGHT0);
+        // Habilita o depth-buffering
+        glEnable(GL_DEPTH_TEST);
+    }else{
+        glDisable(GL_COLOR_MATERIAL);
+        //Habilita o uso de iluminação
+        glDisable(GL_LIGHTING);
+        // Habilita a luz de número 0
+        glDisable(GL_LIGHT0);
+        // Habilita o depth-buffering
+        glDisable(GL_DEPTH_TEST);
+    }
 }

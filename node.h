@@ -1,22 +1,30 @@
 #ifndef NODE_H
 #define NODE_H
 
+#include <QColor>
+
 class Node
 {
 public:
-    Node(int key);
-    int x;
+    Node(int value);
+    Node(int value,int x,int y,int z);
 
-    int getKey();
-    void setKey(int key);
-    void setRightNode(Node *node);
-    Node* getRightNode();
-    void setLeftNode(Node *node);
-    Node* getLeftNode();
-private:
-    int key;
-    Node *rigthNode;
-    Node *leftNode;
+    int posX;
+    int posY;
+    int posZ;
+    int value;
+    Node* rightNode;
+    Node* leftNode;
+    QColor color;
+
+    bool hasLeftNode(void);
+    bool hasRightNode(void);
+
+    bool moveXUntil(int value, int speed = 1);
+    bool moveYUntil(int value,int speed = 1);
+    bool moveZUntil(int value, int speed = 1);
+    bool moveXYUntilRight(int valueX,int valueY, int speed=1);
+    bool moveXYUntilLeft(int valueX,int valueY,int speed=1);
 };
 
 #endif // NODE_H

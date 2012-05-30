@@ -18,18 +18,24 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 protected slots:
-    void addValue(void);
+    void addValue();
     void searchValue(void);
     void deleteValue(void);
-    void setVisibleAxisXYZ(bool visible);
+    void setVisibleAxisXYZ(bool status);
+    void enableLight(bool status);
     void setRotationX(int value);
     void setRotationY(int value);
     void setRotationZ(int value);
+    void animate(void);
+    void zoomIn();
+    void zoomOut(void);
+    void random(bool status);
 protected:
     void keyPressEvent(QKeyEvent *e);
     int getInputValue(void);
 private:
 
+    bool isRandom;
     Ui::MainWindow *ui;
     BSTGL *bstGL;    
 };

@@ -1,4 +1,5 @@
 #include <QtGui>
+#include <ctime>
 
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
@@ -10,10 +11,13 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    srand ( time(NULL) );
 
     bstGL = new BSTGL(this);
+    isRandom = false;
 
     ui->centralWidget->layout()->addWidget(bstGL);
+    this->setFocus();
 }
 
 MainWindow::~MainWindow()
@@ -23,35 +27,34 @@ MainWindow::~MainWindow()
 
 void MainWindow::keyPressEvent(QKeyEvent *e)
 {
-   // qDebug()<<e->key();
     if (e->key() == Qt::Key_Escape)
         close();
-    if(e->key() == Qt::Key_Z)
-        setRotationZ(z++);
-//    if(e->key() == Qt::Key_X)
-//        bstGL->rotateX();
-//    if(e->key() == Qt::Key_Y)
-//        bstGL->rotateY();
-
+    if(e->key() == Qt::Key_Up)
+        bstGL->oZ++;
+    if(e->key() == Qt::Key_Down)
+        bstGL->oZ--;
+    if(e->key() == Qt::Key_Left)
+        bstGL->oX++;
+    if(e->key() == Qt::Key_Right)
+        bstGL->oX--;
     else
         QWidget::keyPressEvent(e);
-    qDebug()<<z;
+
+    bstGL->camera();
 }
 
 void MainWindow::addValue(){
-    int value = getInputValue();
+    int value = -1;
+
+    if(isRandom)
+        value = rand() % 100 + 1;
+    else
+        value = getInputValue();
 
     if(value == -1)
         return;
 
-    bool result = bstGL->add(value);
-
-    if(result)
-        qDebug()<<"Sucess";
-    else
-        qDebug()<<"Fail";
-
-    bstGL->updateGL();
+    bstGL->addValue(value);
 }
 
 void MainWindow::searchValue(){
@@ -73,8 +76,16 @@ int MainWindow::getInputValue(){
         return -1;
 }
 
-void MainWindow::setVisibleAxisXYZ(bool visible){
-    bstGL->viewAxisXYZ(visible);
+void MainWindow::animate(){
+
+}
+
+void MainWindow::setVisibleAxisXYZ(bool status){
+    bstGL->enableAxisXYZ(status);
+}
+
+void MainWindow::enableLight(bool status){
+    bstGL->enableLight(status);
 }
 
 void MainWindow::setRotationX(int angle){
@@ -87,4 +98,27 @@ void MainWindow::setRotationY(int angle){
 
 void MainWindow::setRotationZ(int angle){
     bstGL->setRotateZ(angle);
+}
+
+void MainWindow::zoomIn()
+{
+    bstGL->zoomIn();
+}
+
+void MainWindow::zoomOut()
+{
+    bstGL->zoomOut();
+}
+
+void MainWindow::random(bool status)
+{
+    isRandom = status;
+    ui->actionAddValue->setEnabled(!status);
+
+    if(status){
+        addValue();
+        connect(bstGL,SIGNAL(valueInserted()),this,SLOT(addValue()));
+    }else{
+        disconnect(bstGL,SIGNAL(valueInserted()),this,SLOT(addValue()));
+    }
 }

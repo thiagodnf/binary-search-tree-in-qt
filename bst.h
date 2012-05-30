@@ -7,12 +7,15 @@ class BST
 {
 public:
     BST();
-    bool add(int key);
+    void add(int value,Node* currentNode);
+    void addValue(int value);
+    void alignNodes(Node* node,int x,int y,int direction);
+
     bool search(int key);
     bool remove(int key);
     bool isEmpty(void);
-    int numberOfNodes(Node* node);
 
+    int numberOfNodes(Node* node);
 protected:
     Node* root;
     void removeLeftByCopy(Node* node);
