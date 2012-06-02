@@ -319,6 +319,7 @@ int BSTGL::updateNumberOfChildren(Node* node){
 void BSTGL::clearAll(){
     delete root;
     root = 0;
+    currentNode = 0;
     updateGL();
 }
 
