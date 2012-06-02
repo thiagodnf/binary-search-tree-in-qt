@@ -4,82 +4,83 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-int z = 0;
-
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow)
-{
+    ui(new Ui::MainWindow){
     ui->setupUi(this);
     srand ( time(NULL) );
 
     bstGL = new BSTGL(this);
-    isRandom = false;
-
     ui->centralWidget->layout()->addWidget(bstGL);
 
     setFocus();
+    connect(bstGL,SIGNAL(startOperation()),this,SLOT(desactiveButtons()));
+    connect(bstGL,SIGNAL(doneOperation()),this,SLOT(activeButtons()));
 }
 
-MainWindow::~MainWindow()
-{
+MainWindow::~MainWindow(){
     delete ui;
 }
 
-void MainWindow::keyPressEvent(QKeyEvent *e)
-{
+void MainWindow::keyPressEvent(QKeyEvent *e){
     if (e->key() == Qt::Key_Escape)
         close();
+    if(e->key() == Qt::Key_Right)
+        bstGL->moveRight();
+    if(e->key() == Qt::Key_Left)
+        bstGL->moveLeft();
+    if(e->key() == Qt::Key_PageUp)
+        bstGL->moveFront();
+    if(e->key() == Qt::Key_PageDown)
+        bstGL->moveBack();
     if(e->key() == Qt::Key_Up)
-        bstGL->oZ++;
+        bstGL->moveUp();
     if(e->key() == Qt::Key_Down)
-        bstGL->oZ--;
-    if(e->key() == Qt::Key_Left){
-        bstGL->moveX(2);
-    }if(e->key() == Qt::Key_Right)
-        bstGL->moveX(1);
+        bstGL->moveDown();
     else
         QWidget::keyPressEvent(e);
 }
 
 void MainWindow::addValue(){
-    int value = -1;
-
-    if(isRandom)
-        value = rand() % 100 + 1;
-    else
-        value = getInputValue();
+    int value = getInputValue("Add Value");
 
     if(value == -1)
         return;
+    bstGL->addValue(value);
+}
 
+void MainWindow::addRandomValue(){
+    int value = rand() % 100 + 1;
     bstGL->addValue(value);
 }
 
 void MainWindow::searchValue(){
+    int value = getInputValue("Search Value");
 
+    if(value == -1)
+        return;
+    bstGL->searchValue(value);
 }
 
 void MainWindow::deleteValue(){
+    int value = getInputValue("Remove Value");
 
+    if(value == -1)
+        return;
+    bstGL->removeValue(value);
 }
 
-int MainWindow::getInputValue(){
+int MainWindow::getInputValue(QString name){
     bool ok = false;
-
-    int value = QInputDialog::getInt(this, tr("Input"),tr("Add Value:"), 2,1,199,1,&ok);
+    int value = QInputDialog::getInt(this, tr("Input"),name, 2,1,199,1,&ok);
 
     if(ok)
         return value;
     return -1;
 }
 
-void MainWindow::animate(){
-
-}
-
-void MainWindow::setVisibleAxisXYZ(bool status){
-    bstGL->enableAxisXYZ(status);
+void MainWindow::enableAxis(bool status){
+    bstGL->enableAxis(status);
 }
 
 void MainWindow::enableLight(bool status){
@@ -98,6 +99,29 @@ void MainWindow::setRotationZ(int angle){
     bstGL->setRotateZ(angle);
 }
 
+void MainWindow::setLightPositionX(int value){
+    bstGL->setlightPositionX(value);
+    bstGL->updateGL();
+}
+
+void MainWindow::setLightPositionY(int value){
+    bstGL->setlightPositionY(value);
+    bstGL->updateGL();
+}
+
+void MainWindow::setLightPositionZ(int value){
+    bstGL->setlightPositionZ(value);
+    bstGL->updateGL();
+}
+
+void MainWindow::resetLight(){
+    ui->hSliderLightX->setValue(15);
+    ui->hSliderLightY->setValue(10);
+    ui->hSliderLightZ->setValue(10);
+    bstGL->resetLight();
+    bstGL->updateGL();
+}
+
 void MainWindow::resetRotation(){
     bstGL->resetRotation();
     ui->spinBoxAxisX->setValue(0);
@@ -105,27 +129,65 @@ void MainWindow::resetRotation(){
     ui->spinBoxAxisZ->setValue(0);
 }
 
-void MainWindow::zoomIn()
-{
+void MainWindow::clearAll(){
+    bstGL->clearAll();
+    ui->lineEditNodes->setText(QString::number(bstGL->numberOfNodes()));
+}
+
+void MainWindow::zoomIn(){
     bstGL->zoomIn();
 }
 
-void MainWindow::zoomOut()
-{
+void MainWindow::zoomOut(){
     bstGL->zoomOut();
 }
 
-void MainWindow::random(bool status)
-{
-    isRandom = status;
-    ui->actionAddValue->setEnabled(!status);
-    ui->actionSearchValue->setEnabled(!status);
-    ui->actionRemoveValue->setEnabled(!status);
+void MainWindow::aboutQt(){
+    qApp->aboutQt();
+}
 
+void MainWindow::aboutUs(){
+    QMessageBox::about(this, tr("About Us"),
+            QString::fromUtf8(
+               "<h2>Qt BST with OpenGL</h2>"
+               "Trabalho final da disciplina de Computação Gráfica"
+               "<br><br>"
+               "<b>Universidade Estadual do Ceará - UECE</b>"
+               "<br><br>"
+               "<b>Professor:</b>  Thelmo de Araújo"
+               "<br><br>"
+               "<b>Semestre:</b>  2012.1"
+               "<br><br>"
+               "<b>Desenvolvedores</b>"
+               "<br>"
+               "Débora Martins <br>"
+               "Marcos Brizeno <br>"
+               "Thiago Nascimento <br>"
+               "<br>"
+               "<b>Código Fonte:</b>  <a href='https://github.com/thiagodnf/QtBSTOpenGL'>https://github.com/thiagodnf/QtBSTOpenGL</a>"
+               "<br><br>"
+               ));
+}
+
+void MainWindow::activeButtons(){
+    ui->actionAddValue->setEnabled(true);
+    ui->actionSearchValue->setEnabled(true);
+    ui->actionRemoveValue->setEnabled(true);
+    ui->actionClearAll->setEnabled(true);
+    ui->lineEditNodes->setText(QString::number(bstGL->numberOfNodes()));
+}
+
+void MainWindow::desactiveButtons(){
+    ui->actionAddValue->setEnabled(false);
+    ui->actionSearchValue->setEnabled(false);
+    ui->actionRemoveValue->setEnabled(false);
+    ui->actionClearAll->setEnabled(false);
+}
+
+void MainWindow::random(bool status){      
     if(status){
-        addValue();
-        connect(bstGL,SIGNAL(valueInserted()),this,SLOT(addValue()));
-    }else{
-        disconnect(bstGL,SIGNAL(valueInserted()),this,SLOT(addValue()));
-    }
+        addRandomValue();
+        connect(bstGL,SIGNAL(doneOperation()),this,SLOT(addRandomValue()));
+    }else
+        disconnect(bstGL,SIGNAL(doneOperation()),this,SLOT(addRandomValue()));
 }

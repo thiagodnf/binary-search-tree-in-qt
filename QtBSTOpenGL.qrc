@@ -1,5 +1,8 @@
 <RCC>
   <qresource prefix="/">
+    <file>resources/qt.png</file>
+    <file>resources/axis.png</file>
+    <file>resources/clear.png</file>
     <file>resources/logo.png</file>
     <file>resources/rand.png</file>
     <file>resources/zoom-in.png</file>

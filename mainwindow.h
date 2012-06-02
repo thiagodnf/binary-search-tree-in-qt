@@ -17,28 +17,38 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+
 protected slots:
-    void addValue();
+    void addValue(void);
+    void addRandomValue(void);
     void searchValue(void);
     void deleteValue(void);
-    void setVisibleAxisXYZ(bool status);
+    void enableAxis(bool status);
     void enableLight(bool status);
     void setRotationX(int value);
     void setRotationY(int value);
     void setRotationZ(int value);
-    void resetRotation();
-    void animate(void);
-    void zoomIn();
+    void setLightPositionX(int value);
+    void setLightPositionY(int value);
+    void setLightPositionZ(int value);
+    void resetLight(void);
+    void resetRotation(void);
+    void clearAll(void);
+    void zoomIn(void);
     void zoomOut(void);
+    void activeButtons(void);
+    void desactiveButtons(void);
     void random(bool status);
+    void aboutQt(void);
+    void aboutUs(void);
+
 protected:
     void keyPressEvent(QKeyEvent *e);
-    int getInputValue(void);
-private:
+    int getInputValue(QString name);
 
-    bool isRandom;
-    Ui::MainWindow *ui;
-    BSTGL *bstGL;    
+private:
+    Ui::MainWindow* ui;
+    BSTGL* bstGL;
 };
 
 #endif // MAINWINDOW_H

@@ -58,7 +58,7 @@ void BST::addValue(int value){
     else
         add(value,root);
 
-    alignNodes(root,0,100,ROOT);
+    //alignNodes(root,0,100,ROOT);
 }
 
 void BST::alignNodes(Node* node,int x,int y,int direction) {
@@ -81,18 +81,59 @@ void BST::alignNodes(Node* node,int x,int y,int direction) {
     }
 }
 
-//bool BST::search(int key) {
-//    Node * search = root;
-//    while (search != 0) {
-//        if (search->getKey() == key)
-//            return true;
-//        if (key < search->getKey())
-//            search = search->getLeftNode();
-//        else
-//            search = search->getRightNode();
-//    }
-//    return false;
-//}
+bool BST::search(int value, Node *node)
+{
+    if(node != 0){
+        if(node->value == value)
+            return true;
+        else if(value > node->value)
+            return search(value,node->rightNode);
+        else if(value < node->value)
+            return search(value,node->leftNode);
+    }
+    return false;
+}
+
+bool BST::searchValue(int value) {
+   return search(value,root);
+}
+
+bool BST::removeValue(int value)
+{
+    if(isEmpty())
+        return false;
+    else
+        remove(&root,value);
+
+    //alignNodes(root,0,100,ROOT);
+    return false;
+}
+
+bool BST::remove(Node** node, int value){
+    if(*node != 0){
+        if((*node)->value == value){
+            if((*node)->isLeaf()){
+                delete (*node);
+                (*node) = 0;
+            }else if( ! (*node)->hasLeftNode() && (*node)->hasRightNode()){
+                Node* aux = (*node);
+                (*node) = aux->rightNode;
+                aux->rightNode = 0;
+                delete aux;
+            }else if((*node)->hasLeftNode() && ! (*node)->hasRightNode()){
+                Node* aux = (*node);
+                (*node) = aux->leftNode;
+                aux->leftNode = 0;
+                delete aux;
+            }
+
+        }else if(value > (*node)->value)
+            return remove(&(*node)->rightNode,value);
+        else if(value < (*node)->value)
+            return remove(&(*node)->leftNode,value);
+    }
+    return false;
+}
 
 //bool BST::remove(int key) {
 //    //Árvore vazia

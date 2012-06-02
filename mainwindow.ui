@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>627</width>
+    <width>705</width>
     <height>431</height>
    </rect>
   </property>
@@ -48,13 +48,63 @@
       <property name="currentIndex">
        <number>0</number>
       </property>
+      <widget class="QWidget" name="pageInformation">
+       <attribute name="label">
+        <string>Information</string>
+       </attribute>
+       <widget class="QWidget" name="">
+        <property name="geometry">
+         <rect>
+          <x>1</x>
+          <y>5</y>
+          <width>200</width>
+          <height>29</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <item>
+          <widget class="QLineEdit" name="lineEditNodes">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string>0</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QLabel" name="labelNodes">
+           <property name="text">
+            <string>Nodes:</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </widget>
       <widget class="QWidget" name="pageRotation">
        <property name="geometry">
         <rect>
          <x>0</x>
          <y>0</y>
          <width>200</width>
-         <height>241</height>
+         <height>210</height>
         </rect>
        </property>
        <attribute name="label">
@@ -146,12 +196,182 @@
          <x>0</x>
          <y>0</y>
          <width>200</width>
-         <height>241</height>
+         <height>210</height>
         </rect>
        </property>
        <attribute name="label">
         <string>Light</string>
        </attribute>
+       <widget class="QCheckBox" name="checkBoxEnableLight">
+        <property name="geometry">
+         <rect>
+          <x>-8</x>
+          <y>4</y>
+          <width>81</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Enable</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+       <widget class="QWidget" name="gridLayoutWidget_2">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>30</y>
+          <width>191</width>
+          <height>149</height>
+         </rect>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_2">
+         <item row="2" column="0">
+          <widget class="QSlider" name="hSliderLightZ">
+           <property name="minimum">
+            <number>-50</number>
+           </property>
+           <property name="maximum">
+            <number>50</number>
+           </property>
+           <property name="singleStep">
+            <number>1</number>
+           </property>
+           <property name="pageStep">
+            <number>10</number>
+           </property>
+           <property name="value">
+            <number>10</number>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="invertedAppearance">
+            <bool>true</bool>
+           </property>
+           <property name="tickPosition">
+            <enum>QSlider::TicksBelow</enum>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QSlider" name="hSliderLightX">
+           <property name="minimum">
+            <number>-50</number>
+           </property>
+           <property name="maximum">
+            <number>50</number>
+           </property>
+           <property name="singleStep">
+            <number>1</number>
+           </property>
+           <property name="pageStep">
+            <number>10</number>
+           </property>
+           <property name="value">
+            <number>15</number>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="invertedAppearance">
+            <bool>true</bool>
+           </property>
+           <property name="tickPosition">
+            <enum>QSlider::TicksBelow</enum>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QSlider" name="hSliderLightY">
+           <property name="minimum">
+            <number>-50</number>
+           </property>
+           <property name="maximum">
+            <number>50</number>
+           </property>
+           <property name="singleStep">
+            <number>1</number>
+           </property>
+           <property name="pageStep">
+            <number>10</number>
+           </property>
+           <property name="value">
+            <number>10</number>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="invertedAppearance">
+            <bool>true</bool>
+           </property>
+           <property name="tickPosition">
+            <enum>QSlider::TicksBelow</enum>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QLabel" name="labelLightY">
+           <property name="font">
+            <font>
+             <weight>50</weight>
+             <bold>false</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>Y Axis</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QLabel" name="labelLightZ">
+           <property name="font">
+            <font>
+             <weight>50</weight>
+             <bold>false</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>Z Axis</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QLabel" name="labelLightX">
+           <property name="font">
+            <font>
+             <weight>50</weight>
+             <bold>false</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>X Axis</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QPushButton" name="pushButtonLightReset">
+        <property name="geometry">
+         <rect>
+          <x>95</x>
+          <y>180</y>
+          <width>98</width>
+          <height>27</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Reset</string>
+        </property>
+       </widget>
       </widget>
      </widget>
     </item>
@@ -162,7 +382,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>627</width>
+     <width>705</width>
      <height>25</height>
     </rect>
    </property>
@@ -175,6 +395,9 @@
     <property name="title">
      <string>About</string>
     </property>
+    <addaction name="actionAboutQt"/>
+    <addaction name="separator"/>
+    <addaction name="actionAboutUs"/>
    </widget>
    <widget class="QMenu" name="menuView">
     <property name="title">
@@ -183,8 +406,23 @@
     <addaction name="actionViewAxisXYZ"/>
     <addaction name="actionViewLight"/>
    </widget>
+   <widget class="QMenu" name="menuActions">
+    <property name="title">
+     <string>Actions</string>
+    </property>
+    <addaction name="actionAddValue"/>
+    <addaction name="actionSearchValue"/>
+    <addaction name="actionRemoveValue"/>
+    <addaction name="actionClearAll"/>
+    <addaction name="separator"/>
+    <addaction name="actionRandom"/>
+    <addaction name="separator"/>
+    <addaction name="actionZoomIn"/>
+    <addaction name="actionZoomOut"/>
+   </widget>
    <addaction name="menuArquivo"/>
    <addaction name="menuView"/>
+   <addaction name="menuActions"/>
    <addaction name="menuAbout"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
@@ -197,13 +435,15 @@
    <addaction name="actionAddValue"/>
    <addaction name="actionSearchValue"/>
    <addaction name="actionRemoveValue"/>
+   <addaction name="actionClearAll"/>
    <addaction name="separator"/>
    <addaction name="actionZoomIn"/>
    <addaction name="actionZoomOut"/>
+   <addaction name="actionAxis"/>
    <addaction name="separator"/>
    <addaction name="actionRandom"/>
    <addaction name="separator"/>
-   <addaction name="actionAbout"/>
+   <addaction name="actionAboutUs"/>
    <addaction name="actionExit"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
@@ -212,10 +452,13 @@
     <bool>true</bool>
    </property>
    <property name="checked">
-    <bool>true</bool>
+    <bool>false</bool>
    </property>
    <property name="text">
-    <string>Axis XYZ</string>
+    <string>Axis</string>
+   </property>
+   <property name="shortcut">
+    <string>A</string>
    </property>
   </action>
   <action name="actionAddValue">
@@ -229,6 +472,9 @@
    <property name="toolTip">
     <string>Insert a value in BST Tree</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+A</string>
+   </property>
   </action>
   <action name="actionSearchValue">
    <property name="icon">
@@ -241,6 +487,9 @@
    <property name="toolTip">
     <string>Find a value in BST Tree</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
   </action>
   <action name="actionRemoveValue">
    <property name="icon">
@@ -252,6 +501,9 @@
    </property>
    <property name="toolTip">
     <string>Remove a value in BST Tree</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+R</string>
    </property>
   </action>
   <action name="actionExit">
@@ -266,7 +518,7 @@
     <string>Close the program</string>
    </property>
   </action>
-  <action name="actionAbout">
+  <action name="actionAboutUs">
    <property name="icon">
     <iconset resource="QtBSTOpenGL.qrc">
      <normaloff>:/resources/about.png</normaloff>:/resources/about.png</iconset>
@@ -303,6 +555,9 @@
    <property name="toolTip">
     <string>Zoom In</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+Up</string>
+   </property>
   </action>
   <action name="actionZoomOut">
    <property name="icon">
@@ -314,6 +569,9 @@
    </property>
    <property name="toolTip">
     <string>Zoom Out</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Down</string>
    </property>
   </action>
   <action name="actionRandom">
@@ -329,6 +587,39 @@
    </property>
    <property name="toolTip">
     <string>Random Insert</string>
+   </property>
+  </action>
+  <action name="actionClearAll">
+   <property name="icon">
+    <iconset resource="QtBSTOpenGL.qrc">
+     <normaloff>:/resources/clear.png</normaloff>:/resources/clear.png</iconset>
+   </property>
+   <property name="text">
+    <string>Clear All</string>
+   </property>
+   <property name="toolTip">
+    <string>Clear All</string>
+   </property>
+  </action>
+  <action name="actionAxis">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="QtBSTOpenGL.qrc">
+     <normaloff>:/resources/axis.png</normaloff>:/resources/axis.png</iconset>
+   </property>
+   <property name="text">
+    <string>Axis</string>
+   </property>
+  </action>
+  <action name="actionAboutQt">
+   <property name="icon">
+    <iconset resource="QtBSTOpenGL.qrc">
+     <normaloff>:/resources/qt.png</normaloff>:/resources/qt.png</iconset>
+   </property>
+   <property name="text">
+    <string>About Qt</string>
    </property>
   </action>
  </widget>
@@ -373,7 +664,7 @@
    <sender>actionViewAxisXYZ</sender>
    <signal>triggered(bool)</signal>
    <receiver>MainWindow</receiver>
-   <slot>setVisibleAxisXYZ(bool)</slot>
+   <slot>enableAxis(bool)</slot>
    <hints>
     <hint type="sourcelabel">
      <x>-1</x>
@@ -457,7 +748,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>383</x>
-     <y>136</y>
+     <y>167</y>
     </hint>
     <hint type="destinationlabel">
      <x>590</x>
@@ -473,7 +764,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>356</x>
-     <y>176</y>
+     <y>207</y>
     </hint>
     <hint type="destinationlabel">
      <x>601</x>
@@ -489,7 +780,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>370</x>
-     <y>208</y>
+     <y>239</y>
     </hint>
     <hint type="destinationlabel">
      <x>604</x>
@@ -505,7 +796,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>400</x>
-     <y>241</y>
+     <y>272</y>
     </hint>
     <hint type="destinationlabel">
      <x>600</x>
@@ -513,10 +804,297 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>actionSearchValue</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>searchValue()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>313</x>
+     <y>215</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionRemoveValue</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>deleteValue()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>313</x>
+     <y>215</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionClearAll</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>clearAll()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>313</x>
+     <y>215</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionAxis</sender>
+   <signal>triggered(bool)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>enableAxis(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>352</x>
+     <y>215</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBoxEnableLight</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>enableLight(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>288</x>
+     <y>207</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>352</x>
+     <y>215</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBoxEnableLight</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>actionViewLight</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>288</x>
+     <y>207</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionViewLight</sender>
+   <signal>triggered(bool)</signal>
+   <receiver>checkBoxEnableLight</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>288</x>
+     <y>207</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionAxis</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>actionViewAxisXYZ</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionViewAxisXYZ</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>actionAxis</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>hSliderLightX</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>setLightPositionX(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>336</x>
+     <y>237</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>139</x>
+     <y>204</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>hSliderLightY</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>setLightPositionY(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>354</x>
+     <y>289</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>170</x>
+     <y>259</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>hSliderLightZ</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>setLightPositionZ(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>331</x>
+     <y>335</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>167</x>
+     <y>301</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBoxEnableLight</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>hSliderLightX</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>315</x>
+     <y>207</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>434</x>
+     <y>237</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBoxEnableLight</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>hSliderLightY</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>321</x>
+     <y>212</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>391</x>
+     <y>282</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBoxEnableLight</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>hSliderLightZ</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>316</x>
+     <y>203</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>417</x>
+     <y>343</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButtonLightReset</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>resetLight()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>365</x>
+     <y>388</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>181</x>
+     <y>349</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionAboutUs</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>aboutUs()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>352</x>
+     <y>215</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionAboutQt</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>aboutQt()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>352</x>
+     <y>215</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>addValue()</slot>
-  <slot>setVisibleAxisXYZ(bool)</slot>
   <slot>setRotationX(int)</slot>
   <slot>setRotationY(int)</slot>
   <slot>setRotationZ(int)</slot>
@@ -525,5 +1103,15 @@
   <slot>zoomOut()</slot>
   <slot>random(bool)</slot>
   <slot>resetRotation()</slot>
+  <slot>searchValue()</slot>
+  <slot>deleteValue()</slot>
+  <slot>clearAll()</slot>
+  <slot>enableAxis(bool)</slot>
+  <slot>setLightPositionX(int)</slot>
+  <slot>setLightPositionY(int)</slot>
+  <slot>setLightPositionZ(int)</slot>
+  <slot>resetLight()</slot>
+  <slot>aboutQt()</slot>
+  <slot>aboutUs()</slot>
  </slots>
 </ui>
