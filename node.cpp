@@ -1,6 +1,8 @@
 #include "node.h"
 #include <cmath>
 
+using namespace std;
+
 Node::Node(int value)
 {
     this->value = value;
