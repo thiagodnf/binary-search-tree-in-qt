@@ -406,13 +406,13 @@ void BSTGL::zoomOut(){
 }
 
 void BSTGL::moveRight(){
-    xTrans -= 3;
+    xTrans += 3;
     calculate();
     updateGL();
 }
 
 void BSTGL::moveLeft(){
-    xTrans += 3;
+    xTrans -= 3;
     calculate();
     updateGL();
 }
