@@ -62,28 +62,6 @@ void Painter::drawSphere(GLfloat x, GLfloat y, GLfloat z, GLdouble radio) {
     glPopMatrix();
 }
 
-void Painter::drawCone(int x,int y,int z,int radius_top, int radius_bottom, int height) {
-    glPushMatrix();
-    {
-        GLUquadric *cylinder = gluNewQuadric();
-        gluQuadricDrawStyle(cylinder, GLU_FILL);
-        gluQuadricOrientation(cylinder, GLU_INSIDE);
-
-        glTranslatef(x,y,z);
-        //glRotatef(45, a, b, c);
-        glRotatef(90, 1, 0, 0);
-        glRotatef(45, 0, 1, 0);
-
-        gluCylinder(cylinder, radius_bottom, radius_top, height, 20, 20);
-        gluDeleteQuadric(cylinder);
-    }
-    glPopMatrix();
-}
-
-void Painter::drawCylinder(int x,int y,int z,int radius, int height) {
-    drawCone(x,y,z,radius, radius, height);
-}
-
 void Painter::drawEdge(int x1,int y1,int x2,int y2){
 
     int height = abs(y2-y1);
@@ -112,31 +90,6 @@ void Painter::drawEdge(int x1,int y1,int x2,int y2){
     }
     glPopMatrix();
 }
-
-//void Painter::drawEdge(int x1,int y1,int z1,int x2,int y2,int z2){
-
-//    int height = abs(y2-y1);
-//    int width = abs(x2-x1);
-//    float distance = sqrt(abs(pow(width,2)+pow(height,2)));
-//    float tan = float(x2-x1)/(y2-y1);
-//    float anguloRad = atan(tan);
-//    float anguloGraus = (180/M_PI)*anguloRad;
-
-//    glPushMatrix();
-//    {
-//        GLUquadric *cylinder = gluNewQuadric();
-//        gluQuadricDrawStyle(cylinder, GLU_FILL);
-//        gluQuadricOrientation(cylinder, GLU_INSIDE);
-
-//        glTranslatef(x1,y1,0);
-//        glRotatef(90, 1, 0, 0);
-//        glRotatef(-anguloGraus, 0, 1, 0);
-
-//        gluCylinder(cylinder, 2, 2, distance, 200, 20);
-//        gluDeleteQuadric(cylinder);
-//    }
-//    glPopMatrix();
-//}
 
 void Painter::enableLight(bool status=true){
     if(status){

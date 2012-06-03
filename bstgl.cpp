@@ -323,8 +323,7 @@ void BSTGL::clearAll(){
     updateGL();
 }
 
-void BSTGL::calculate()
-{
+void BSTGL::calculate(){
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
 
