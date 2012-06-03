@@ -18,9 +18,7 @@ public:
     void alignNodes(Node* node,int x,int y,int direction);
     int numberOfNodes(Node* node);
 protected:
-    Node* root;
-    void removeLeftByCopy(Node* node);
-    void removeRightByCopy(Node* node);
+    Node* root;    
     void add(int value,Node* currentNode);
     bool search(int value,Node* node);    
     bool remove(Node** node, int value);
