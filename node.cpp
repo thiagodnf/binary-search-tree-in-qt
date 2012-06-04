@@ -113,17 +113,15 @@ bool Node::travelUtil(Node *node,int speed)
     if(node != 0){
         if(posY < node->posY)
             return true;
+        if(posX == node->posX && posY == node->posY)
+            return true;
 
         float deltaY = (posY - node->posY);
         float deltaX = (posX - node->posX);
         float reason = deltaX/deltaY;
 
-        if(posY > node->posY)
-            posY -= speed;
-        if(posX != node->posX)
-            posX -= speed*reason;
-        if(posX == node->posX && posY == node->posY)
-            return true;
+        posY -= speed;
+        posX -= speed*reason;
     }
     return false;
 }
