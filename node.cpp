@@ -130,14 +130,14 @@ bool Node::travelLeft(Node* node,int speed)
 {
     float destX = node->posX-30;
     float destY = node->posY-30;
+    if(posX == destX && posY == destY)
+        return true;
 
     if(posY > destY)
         posY -= speed;
     if(posX > destX)
         posX -= speed;
 
-    if(posX == destX && posY == destY)
-        return true;
     return false;
 }
 
@@ -145,14 +145,14 @@ bool Node::travelRight(Node* node,int speed)
 {
     float destX = node->posX+30;
     float destY = node->posY-30;
+    if(posX == destX && posY == destY)
+        return true;
 
     if(posY > destY)
         posY -= speed;
     if(posX < destX)
         posX += speed;
 
-    if(posX == destX && posY == destY)
-        return true;
     return false;
 }
 
