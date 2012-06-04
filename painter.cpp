@@ -43,7 +43,6 @@ void Painter::drawAxis3D(){
 
 void Painter::drawText(float posX, float posY, float posZ, const char* text) {
     glPushMatrix();
-        //glColor3f(1.0, 0.0, 0.0);
         glRasterPos3f(posX, posY, posZ);
         glutBitmapString(GLUT_BITMAP_HELVETICA_10, (const unsigned char*) text);
     glPopMatrix();

@@ -54,12 +54,11 @@ void BST::alignNodes(Node* node,int x,int y,int direction) {
 
 bool BST::search(int value, Node *node){
     if(node != 0){
-        if(node->value == value)
-            return true;
-        else if(value > node->value)
+        if(value > node->value)
             return search(value,node->rightNode);
         else if(value < node->value)
             return search(value,node->leftNode);
+        return true;
     }
     return false;
 }
@@ -69,11 +68,8 @@ bool BST::searchValue(int value) {
 }
 
 bool BST::removeValue(int value){
-    if(isEmpty())
-        return false;
-    else
+    if(!isEmpty())
         remove(&root,value);
-
     return false;
 }
 
@@ -108,13 +104,9 @@ bool BST::remove(Node** node, int value){
 }
 
 int BST::numberOfNodes(Node* node) {
-    if (node != 0)
-        return numberOfNodes(node->leftNode) + numberOfNodes(node->rightNode) + 1;
-    return 0;
+    return node == 0 ? 0 : numberOfNodes(node->leftNode) + numberOfNodes(node->rightNode) + 1;
 }
 
 bool BST::isEmpty() {
-    if (root == 0)
-        return true;
-    return false;
+    return root == 0;
 }
