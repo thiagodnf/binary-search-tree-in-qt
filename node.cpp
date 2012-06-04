@@ -162,7 +162,6 @@ bool Node::travelDown(int value, int speed)
 
     if(posY <= value)
         return true;
-    else
-        posY -= speed;
+    posY -= speed;
     return false;
 }
