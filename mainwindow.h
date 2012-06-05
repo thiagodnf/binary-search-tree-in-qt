@@ -31,6 +31,12 @@ protected slots:
     void setLightPositionX(int value);
     void setLightPositionY(int value);
     void setLightPositionZ(int value);
+    void moveLeft();
+    void moveRight();
+    void moveUp();
+    void moveDown();
+    void moveBack();
+    void moveFront();
     void resetLight(void);
     void resetRotation(void);
     void clearAll(void);

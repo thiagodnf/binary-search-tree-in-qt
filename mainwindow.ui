@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>705</width>
-    <height>431</height>
+    <width>704</width>
+    <height>455</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -49,16 +49,24 @@
        <number>0</number>
       </property>
       <widget class="QWidget" name="pageInformation">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>200</width>
+         <height>210</height>
+        </rect>
+       </property>
        <attribute name="label">
         <string>Information</string>
        </attribute>
-       <widget class="QWidget" name="">
+       <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
          <rect>
           <x>1</x>
           <y>5</y>
           <width>200</width>
-          <height>29</height>
+          <height>33</height>
          </rect>
         </property>
         <layout class="QHBoxLayout" name="horizontalLayout_3">
@@ -116,7 +124,7 @@
           <x>0</x>
           <y>0</y>
           <width>201</width>
-          <height>128</height>
+          <height>144</height>
          </rect>
         </property>
         <layout class="QGridLayout" name="gridLayout">
@@ -382,14 +390,15 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>705</width>
-     <height>25</height>
+     <width>704</width>
+     <height>29</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuArquivo">
     <property name="title">
      <string>File</string>
     </property>
+    <addaction name="actionExit"/>
    </widget>
    <widget class="QMenu" name="menuAbout">
     <property name="title">
@@ -410,6 +419,17 @@
     <property name="title">
      <string>Actions</string>
     </property>
+    <widget class="QMenu" name="menuMove">
+     <property name="title">
+      <string>Move to</string>
+     </property>
+     <addaction name="actionMoveToLeft"/>
+     <addaction name="actionMoveToRight"/>
+     <addaction name="actionMoveToUp"/>
+     <addaction name="actionMoveToDown"/>
+     <addaction name="actionMoveToFront"/>
+     <addaction name="actionMoveToBack"/>
+    </widget>
     <addaction name="actionAddValue"/>
     <addaction name="actionSearchValue"/>
     <addaction name="actionRemoveValue"/>
@@ -419,6 +439,8 @@
     <addaction name="separator"/>
     <addaction name="actionZoomIn"/>
     <addaction name="actionZoomOut"/>
+    <addaction name="separator"/>
+    <addaction name="menuMove"/>
    </widget>
    <addaction name="menuArquivo"/>
    <addaction name="menuView"/>
@@ -622,6 +644,54 @@
     <string>About Qt</string>
    </property>
   </action>
+  <action name="actionMoveToLeft">
+   <property name="text">
+    <string>Left</string>
+   </property>
+   <property name="shortcut">
+    <string>Left</string>
+   </property>
+  </action>
+  <action name="actionMoveToRight">
+   <property name="text">
+    <string>Right</string>
+   </property>
+   <property name="shortcut">
+    <string>Right</string>
+   </property>
+  </action>
+  <action name="actionMoveToUp">
+   <property name="text">
+    <string>Up</string>
+   </property>
+   <property name="shortcut">
+    <string>Up</string>
+   </property>
+  </action>
+  <action name="actionMoveToDown">
+   <property name="text">
+    <string>Down</string>
+   </property>
+   <property name="shortcut">
+    <string>Down</string>
+   </property>
+  </action>
+  <action name="actionMoveToFront">
+   <property name="text">
+    <string>Front</string>
+   </property>
+   <property name="shortcut">
+    <string>PgUp</string>
+   </property>
+  </action>
+  <action name="actionMoveToBack">
+   <property name="text">
+    <string>Back</string>
+   </property>
+   <property name="shortcut">
+    <string>PgDown</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
@@ -747,8 +817,8 @@
    <slot>setRotationX(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>383</x>
-     <y>167</y>
+     <x>452</x>
+     <y>206</y>
     </hint>
     <hint type="destinationlabel">
      <x>590</x>
@@ -763,8 +833,8 @@
    <slot>setRotationY(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>356</x>
-     <y>207</y>
+     <x>452</x>
+     <y>243</y>
     </hint>
     <hint type="destinationlabel">
      <x>601</x>
@@ -779,8 +849,8 @@
    <slot>setRotationZ(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>370</x>
-     <y>239</y>
+     <x>452</x>
+     <y>280</y>
     </hint>
     <hint type="destinationlabel">
      <x>604</x>
@@ -795,8 +865,8 @@
    <slot>resetRotation()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>400</x>
-     <y>272</y>
+     <x>452</x>
+     <y>317</y>
     </hint>
     <hint type="destinationlabel">
      <x>600</x>
@@ -875,8 +945,8 @@
    <slot>enableLight(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>288</x>
-     <y>207</y>
+     <x>325</x>
+     <y>235</y>
     </hint>
     <hint type="destinationlabel">
      <x>352</x>
@@ -891,8 +961,8 @@
    <slot>setChecked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>288</x>
-     <y>207</y>
+     <x>325</x>
+     <y>235</y>
     </hint>
     <hint type="destinationlabel">
      <x>-1</x>
@@ -911,8 +981,8 @@
      <y>-1</y>
     </hint>
     <hint type="destinationlabel">
-     <x>288</x>
-     <y>207</y>
+     <x>325</x>
+     <y>235</y>
     </hint>
    </hints>
   </connection>
@@ -955,8 +1025,8 @@
    <slot>setLightPositionX(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>336</x>
-     <y>237</y>
+     <x>442</x>
+     <y>279</y>
     </hint>
     <hint type="destinationlabel">
      <x>139</x>
@@ -971,8 +1041,8 @@
    <slot>setLightPositionY(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>354</x>
-     <y>289</y>
+     <x>442</x>
+     <y>324</y>
     </hint>
     <hint type="destinationlabel">
      <x>170</x>
@@ -987,8 +1057,8 @@
    <slot>setLightPositionZ(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>331</x>
-     <y>335</y>
+     <x>442</x>
+     <y>369</y>
     </hint>
     <hint type="destinationlabel">
      <x>167</x>
@@ -1003,12 +1073,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>315</x>
-     <y>207</y>
+     <x>325</x>
+     <y>235</y>
     </hint>
     <hint type="destinationlabel">
-     <x>434</x>
-     <y>237</y>
+     <x>442</x>
+     <y>279</y>
     </hint>
    </hints>
   </connection>
@@ -1019,12 +1089,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>321</x>
-     <y>212</y>
+     <x>325</x>
+     <y>235</y>
     </hint>
     <hint type="destinationlabel">
-     <x>391</x>
-     <y>282</y>
+     <x>442</x>
+     <y>324</y>
     </hint>
    </hints>
   </connection>
@@ -1035,12 +1105,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>316</x>
-     <y>203</y>
+     <x>325</x>
+     <y>235</y>
     </hint>
     <hint type="destinationlabel">
-     <x>417</x>
-     <y>343</y>
+     <x>442</x>
+     <y>369</y>
     </hint>
    </hints>
   </connection>
@@ -1051,8 +1121,8 @@
    <slot>resetLight()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>365</x>
-     <y>388</y>
+     <x>445</x>
+     <y>416</y>
     </hint>
     <hint type="destinationlabel">
      <x>181</x>
@@ -1092,6 +1162,102 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>actionMoveToLeft</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>moveLeft()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>352</x>
+     <y>215</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionMoveToRight</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>moveRight()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>351</x>
+     <y>227</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionMoveToBack</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>moveBack()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>351</x>
+     <y>227</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionMoveToDown</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>moveDown()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>351</x>
+     <y>227</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionMoveToFront</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>moveFront()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>351</x>
+     <y>227</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionMoveToUp</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>moveUp()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>351</x>
+     <y>227</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>addValue()</slot>
@@ -1113,5 +1279,11 @@
   <slot>resetLight()</slot>
   <slot>aboutQt()</slot>
   <slot>aboutUs()</slot>
+  <slot>moveLeft()</slot>
+  <slot>moveRight()</slot>
+  <slot>moveFront()</slot>
+  <slot>moveBack()</slot>
+  <slot>moveUp()</slot>
+  <slot>moveDown()</slot>
  </slots>
 </ui>

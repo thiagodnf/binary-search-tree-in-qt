@@ -441,7 +441,6 @@ void BSTGL::moveDown(){
     updateGL();
 }
 
-
 int BSTGL::numberOfNodes(){
     if(! isEmpty())
         return root->children;
@@ -494,8 +493,7 @@ void BSTGL::paintNode(Node *node){
     }
 }
 
-void BSTGL::paintEdgeCurrentNode()
-{
+void BSTGL::paintEdgeCurrentNode(){
     if(currentNode != 0){
         if(nextCurrentNode != 0){
             if(currentNode->posY <= nextCurrentNode->posY){

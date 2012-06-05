@@ -26,19 +26,43 @@ void MainWindow::keyPressEvent(QKeyEvent *e){
     if (e->key() == Qt::Key_Escape)
         close();
     if(e->key() == Qt::Key_Right)
-        bstGL->moveRight();
+        moveRight();
     if(e->key() == Qt::Key_Left)
-        bstGL->moveLeft();
+        moveLeft();
     if(e->key() == Qt::Key_PageUp)
-        bstGL->moveFront();
+        moveFront();
     if(e->key() == Qt::Key_PageDown)
-        bstGL->moveBack();
+        moveBack();
     if(e->key() == Qt::Key_Up)
-        bstGL->moveUp();
+        moveUp();
     if(e->key() == Qt::Key_Down)
-        bstGL->moveDown();
+        moveDown();
     else
         QWidget::keyPressEvent(e);
+}
+
+void MainWindow::moveLeft(){
+    bstGL->moveLeft();
+}
+
+void MainWindow::moveRight(){
+    bstGL->moveRight();
+}
+
+void MainWindow::moveFront(){
+    bstGL->moveFront();
+}
+
+void MainWindow::moveBack(){
+    bstGL->moveBack();
+}
+
+void MainWindow::moveUp(){
+    bstGL->moveUp();
+}
+
+void MainWindow::moveDown(){
+    bstGL->moveDown();
 }
 
 void MainWindow::addValue(){
