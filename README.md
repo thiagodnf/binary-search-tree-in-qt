@@ -57,4 +57,4 @@ Authors:
 
 Dependencies:
 -----------
-`sudo apt-get install qtcreator g   freeglut3-dev`
+`sudo apt-get install qtcreator g++ freeglut3-dev`
