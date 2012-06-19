@@ -3,7 +3,7 @@ Qt BST OpenGL
 Binary Search Tree (BST) in Qt and OpenGL
 
 How to use
-======
+-----------
 Clone this repo, if you use git:
 
 `git clone https://github.com/thiagodnf/QtBSTOpenGL.git`
@@ -25,7 +25,7 @@ When the compiling is finished, you should get a file named 'QtBSTOpenGL', just 
 `QtBSTOpenGL$ ./QtBSTOpenGL`
 
 Cool Features
-======
+-----------
 
 All the three main operations of the BST can be done by clicking in the buttons 'Add', 'Search' and 'Remove'.
 
@@ -51,9 +51,9 @@ The 'Light' pane offers controllers to position the light source of the model, a
 
 Authors:
 -----------
-- Débora Martins
-- Marcos Brizendo
-- Thiago Nascimento
+- Débora Martins (github.com/dehvmartins)
+- Marcos Brizendo (about.me/marcosbrizeno)
+- Thiago Nascimento (about.me/thiagodnf)
 
 Dependencies:
 -----------
