@@ -2,6 +2,11 @@ Qt BST OpenGL
 ======
 Binary Search Tree (BST) in Qt and OpenGL
 
+Demo
+-----------
+
+http://www.youtube.com/watch?v=35tUnyhhF1U
+
 How to use
 -----------
 Clone this repo, if you use git:
