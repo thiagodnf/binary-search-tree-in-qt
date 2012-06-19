@@ -51,9 +51,9 @@ The 'Light' pane offers controllers to position the light source of the model, a
 
 Authors:
 -----------
-- Débora Martins (github.com/dehvmartins)
-- Marcos Brizendo (about.me/marcosbrizeno)
-- Thiago Nascimento (about.me/thiagodnf)
+- Débora Martins (http://twitter.com/dehvmartins)
+- Marcos Brizendo (http://about.me/marcosbrizeno)
+- Thiago Nascimento (http://thiagodnf.com)
 
 Dependencies:
 -----------
